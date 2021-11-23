@@ -1,0 +1,15 @@
+[submodule "awesome-bank-config"]
+	path = awesome-bank-config
+	url = git@github.com:awesome-bank/awesome-bank-config.git
+[submodule "awesome-bank-config-server"]
+	path = awesome-bank-config-server
+	url = git@github.com:awesome-bank/awesome-bank-config-server.git
+[submodule "awesome-bank-loan-service"]
+	path = awesome-bank-loan-service
+	url = git@github.com:awesome-bank/awesome-bank-loan-service.git
+[submodule "awesome-bank-card-service"]
+	path = awesome-bank-card-service
+	url = git@github.com:awesome-bank/awesome-bank-card-service.git
+[submodule "awesome-bank-account-service"]
+	path = awesome-bank-account-service
+	url = git@github.com:awesome-bank/awesome-bank-account-service.git
