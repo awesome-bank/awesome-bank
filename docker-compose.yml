@@ -1,0 +1,85 @@
+version: "3.9"
+
+services:
+
+  account-service:
+    build: ./awesome-bank-account-service
+    environment:
+      SPRING_PROFILES_ACTIVE: prod
+    ports:
+      - "8080:8080"
+    networks:
+      - vksviit-network
+    depends_on:
+      - account-db
+
+  card-service:
+    build: ./awesome-bank-card-service
+    environment:
+      SPRING_PROFILES_ACTIVE: prod
+    ports:
+      - "8081:8081"
+    networks:
+      - vksviit-network
+    depends_on:
+      - card-db
+
+  loan-service:
+    build: ./awesome-bank-loan-service
+    environment:
+      SPRING_PROFILES_ACTIVE: prod
+    ports:
+      - "8082:8082"
+    networks:
+      - vksviit-network
+    depends_on:
+      - loan-db
+
+  config-server:
+    build: ./awesome-bank-config-server
+    ports:
+      - "8084:8084"
+    networks:
+      - vksviit-network
+
+  account-db:
+    image: mysql:8
+    restart: unless-stopped
+    environment:
+      MYSQL_DATABASE: accounts
+      MYSQL_USER: account_user
+      MYSQL_PASSWORD: root
+      MYSQL_ROOT_PASSWORD: root
+    ports:
+      - 3506:3306
+    networks:
+      - vksviit-network
+
+  card-db:
+    image: mysql:8
+    restart: unless-stopped
+    environment:
+      MYSQL_DATABASE: cards
+      MYSQL_USER: card_user
+      MYSQL_PASSWORD: root
+      MYSQL_ROOT_PASSWORD: root
+    ports:
+      - 3606:3306
+    networks:
+      - vksviit-network
+
+  loan-db:
+    image: mysql:8
+    restart: unless-stopped
+    environment:
+      MYSQL_DATABASE: loans
+      MYSQL_USER: loan_user
+      MYSQL_PASSWORD: root
+      MYSQL_ROOT_PASSWORD: root
+    ports:
+      - 3706:3306
+    networks:
+      - vksviit-network
+
+networks:
+  vksviit-network: null
